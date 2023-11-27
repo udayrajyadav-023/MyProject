@@ -1,0 +1,60 @@
+<h1 id="counter">Counter</h1>
+<button onclick="getContFromExtRsc(1)"> page 1</button>
+<button onclick="getContFromExtRsc(2)"> page 2</button>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Avatar</th>
+        </tr>
+    </thead>
+    <tbody id="records">
+        <tr>
+            <td>Id</td>
+            <td>Email</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Avatar</td>   
+        </tr>
+    </tbody>
+</table>
+<div id="result"></div>
+
+<script>
+    cnt=0
+     setInterval(()=>{document.getElementById("counter").innerHTML=cnt++},1000)
+
+function getContFromExtRsc(pageno){
+    url= `https://reqres.in/api/users?page=${pageno}`
+
+    fetch(url)
+    .then(res=>res.json())
+    .then(result=>{
+        // console.log(result)
+         console.table(result['data'])
+        console.log(result['data'][0]['email'])
+       
+        document.getElementById("result").innerHTML=result['data'][0]['email']
+
+        output= ''
+        for(let i=0;i<6;i++){
+           
+            output = output +`<tr>`
+            output = output + ` <td>${result['data'][i]['id']}</td>`
+            output = output + `  <td>${result['data'][i]['email']}</td>`
+            output = output + ` <td>${result['data'][i]['first_name']}</td>`
+            output = output + ` <td>${result['data'][i]['last_name']}</td>`
+            output = output + `<td> <img src="${result['data'][i]['avatar']}" ></td> `  
+            output = output + ` </tr>`
+
+            document.getElementById("records").innerHTML=output
+        }
+       
+    })
+}
+
+</script>
