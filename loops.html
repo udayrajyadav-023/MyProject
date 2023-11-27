@@ -1,0 +1,51 @@
+<h2 id="1"></h2>
+<h1 id="2"></h1>
+<script>
+//     var num= prompt("enter num")
+// for(let j=1;j<=num;j++){
+//     console.log(`square of ${j} is ${j * j}`)
+// }
+
+
+/*-----------------------------------------------------------------*/
+
+
+//  output=''
+// for(let i=1;i<=20;i++){
+//     if(i==13){
+//         continue;
+//     }
+//     console.log(`Floor No: ${i}`)
+//     output=output+`Floor No : ${i} <br/>`
+
+//     if(i==17){
+//         break;
+//     }
+   
+// }
+// document.getElementById("1").innerHTML=output
+// console.log("loop k bahar ...")
+ flr = '';
+for (let i=1;i<=20;i++){
+
+    if(i==13){
+          continue;
+    }
+    
+
+     flr = flr+`Floor No: ${i} <br/>`
+
+     document.getElementById("1").innerHTML=flr
+
+     
+     if(i==17){
+        break;
+    }
+    document.getElementById("2").innerHTML="  NOW YOU ARE OUTSIDE THE LOOP !!!!! "
+}
+
+
+
+
+
+</script>
